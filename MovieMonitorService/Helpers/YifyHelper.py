@@ -1,6 +1,7 @@
 import json
 import requests
-from Models import MovieData
+from Models.MovieData import Movie
+from Models.TorrentData import Torrent
 from Constants.YifyConstants import YifyConstants
 
 class YifyHelper():
@@ -19,12 +20,19 @@ class YifyHelper():
             return None
         
         movies = []
-
+        
         for val in data['data']['movies']:
-            movie = MovieData.Movie(val[YifyConstants.ID], val[YifyConstants.TitleLong], val[YifyConstants.DescriptionFull], val[YifyConstants.Year],
-                val[YifyConstants.Rating], val[YifyConstants.Genres], val[YifyConstants.DateUploaded], val[YifyConstants.Torrents], val[YifyConstants.BackGroundImageOriginal])
+
+            torrents = []
+            for yifyTorrent in val[YifyConstants.Torrents]:
+                torrent = Torrent(yifyTorrent[YifyConstants.TorrentHash], yifyTorrent[YifyConstants.TorrentUrl], yifyTorrent[YifyConstants.TorrentSize],
+                                    yifyTorrent[YifyConstants.TorrentUploadedData], yifyTorrent[YifyConstants.TorrentQuality])
+                
+                torrents.append(torrent);
+            
+            movie = Movie(val[YifyConstants.ID], val[YifyConstants.TitleLong], val[YifyConstants.DescriptionFull], val[YifyConstants.Year],
+                val[YifyConstants.Rating], val[YifyConstants.Genres], val[YifyConstants.DateUploaded], torrents, val[YifyConstants.BackGroundImageOriginal])
 
             movies.append(movie)
-            
-        return
+        return movies;
 

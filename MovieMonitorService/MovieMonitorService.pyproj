@@ -31,9 +31,23 @@
     <Compile Include="Controllers\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataControllers\MovieMonitorDB\MovieDataModel.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataControllers\MovieMonitorDB\__init__.py" />
+    <Compile Include="DataControllers\__init__.py" />
+    <Compile Include="Helpers\ConfigSetupHelper.py" />
+    <Compile Include="Helpers\LoggerHelper.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\MongoHelper.py" />
+    <Compile Include="Helpers\MsSqlHelper.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Helpers\YifyHelper.py" />
     <Compile Include="Helpers\__init__.py" />
     <Compile Include="Main.py" />
+    <Compile Include="Models\TorrentData.py" />
     <Compile Include="Models\MovieData.py">
       <SubType>Code</SubType>
     </Compile>
@@ -41,9 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="DataControllers\MovieMonitorDB\" />
     <Folder Include="Helpers\" />
     <Folder Include="Models\" />
     <Folder Include="Constants\" />
+    <Folder Include="DataControllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config.json" />

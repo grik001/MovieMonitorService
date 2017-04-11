@@ -1,6 +1,6 @@
 import pypyodbc
 
-class MongoHelper():
+class Mongo():
     
     def __init__(self):
         self.connectionString = 'Driver={SQL Server};Server=DESKTOP-AFPM7GO;Database=MovieMonitor'

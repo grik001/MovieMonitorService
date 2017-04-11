@@ -3,12 +3,13 @@ import requests
 from Models.MovieData import Movie
 from Models.TorrentData import Torrent
 from Constants.YifyConstants import YifyConstants
+from Helpers.ConfigSetupHelper import ConfigSetup
 
-class YifyHelper():
+class Yify():
     """description of class"""
 
     def GetLatestMovies():
-        url = 'https://yts.ag/api/v2/list_movies.json'
+        url = ConfigSetup.YiftMovieRequestGetUrl
         params = dict(sort_by='date_added', order_by='desc')
         resp = requests.get(url=url, params=params)
         data = json.loads(resp.text)

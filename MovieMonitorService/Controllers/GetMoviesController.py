@@ -1,12 +1,12 @@
-from Helpers import YifyHelper
+from Helpers.YifyHelper import Yify
 from DataControllers.MovieMonitorDB.MovieDataModel import MovieDataModel
 from time import gmtime, strftime
 
 
-class GetMoviesController():
+class GetMovies():
     
     def StartProcess():
-        yifyMovies = YifyHelper.YifyHelper.GetLatestMovies();
+        yifyMovies = Yify.GetLatestMovies();
         entryTime = strftime("%Y-%m-%d %H:%M:%S", gmtime())
         movieDataModel = MovieDataModel();
 

@@ -1,5 +1,5 @@
 ﻿{
-  "YiftMovieRequestGetUrl": "",
-  "MoviesDatabaseConnectionString": "",
-  "LoggingMongoConnectionString": ""
+  "YiftMovieRequestGetUrl": "https://yts.ag/api/v2/list_movies.json",
+  "MoviesDatabaseConnectionString": "Driver={SQL Server};Server=DESKTOP-AFPM7GO;Database=MovieMonitor",
+  "LoggingMongoConnectionString": "Driver={SQL Server};Server=DESKTOP-AFPM7GO;Database=MovieMonitor"
 }

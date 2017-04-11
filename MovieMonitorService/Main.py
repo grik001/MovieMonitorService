@@ -1,5 +1,12 @@
-from Controllers import GetMoviesController
+from Controllers.GetMoviesController import GetMovies
+from Controllers.GetMovieImagesController import GetMovieImages
 
-GetMoviesController.GetMoviesController.StartProcess()
+from Helpers.ConfigSetupHelper import ConfigSetup
+import json
+
+ConfigSetup.LoadFile();
+GetMovies.StartProcess()
+GetMovieImages.DownloadMissingImages()
+
 
 

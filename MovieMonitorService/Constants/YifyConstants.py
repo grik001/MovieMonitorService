@@ -8,7 +8,7 @@ class YifyConstants():
     Genres = 'genres'
     DateUploaded = 'date_uploaded'
     Torrents = 'torrents'
-    BackGroundImageOriginal = 'background_image_original'
+    BackGroundImageOriginal = 'large_cover_image'
 
     TorrentUrl = 'url'
     TorrentHash = 'hash'

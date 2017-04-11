@@ -25,6 +25,7 @@
   <ItemGroup>
     <Compile Include="Constants\YifyConstants.py" />
     <Compile Include="Constants\__init__.py" />
+    <Compile Include="Controllers\GetMovieImagesController.py" />
     <Compile Include="Controllers\GetMoviesController.py">
       <SubType>Code</SubType>
     </Compile>

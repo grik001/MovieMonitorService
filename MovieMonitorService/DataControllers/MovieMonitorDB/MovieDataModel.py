@@ -21,6 +21,16 @@ class MovieDataModel():
 
         return movies;
 
+    def Select_GetBytes(self):
+        data = MsSql().Select("Movie", ["ImageBytes"], "");
+        
+        byteList = []
+        for val in data:
+            bytes = val[0]    
+            byteList.append(bytes)
+
+        return bytes;
+        
     def Select_GetMoviesMissingImages(self):
         data = MsSql().Select("Movie", ["CAST(ID AS VARCHAR(36)) ID", "ImageUrl"], "WHERE ImageBytes IS NULL");
         movies = []

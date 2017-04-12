@@ -4,11 +4,13 @@ from Models.MovieData import Movie
 from Models.TorrentData import Torrent
 from Constants.YifyConstants import YifyConstants
 from Helpers.ConfigSetupHelper import ConfigSetup
+from Helpers.LoggerHelper import Logger
 
 class Yify():
     """description of class"""
 
     def GetLatestMovies():
+        Logger().Log("Retreiving MovieMetaData for Yify from {}".format(ConfigSetup.YiftMovieRequestGetUrl), "INFO")
         url = ConfigSetup.YiftMovieRequestGetUrl
         params = dict(sort_by='date_added', order_by='desc')
         resp = requests.get(url=url, params=params)
@@ -21,19 +23,24 @@ class Yify():
             return None
         
         movies = []
-        
-        for val in data['data']['movies']:
 
+        yifyMovies = data['data']['movies']
+        Logger().Log("Retreiving MovieMetaData for Yify ready : Count : {}".format(len(yifyMovies)), "INFO")
+        
+        for yifyMovie in yifyMovies:
             torrents = []
-            for yifyTorrent in val[YifyConstants.Torrents]:
+
+            for yifyTorrent in yifyMovie[YifyConstants.Torrents]:
                 torrent = Torrent(yifyTorrent[YifyConstants.TorrentHash], yifyTorrent[YifyConstants.TorrentUrl], yifyTorrent[YifyConstants.TorrentSize],
                                     yifyTorrent[YifyConstants.TorrentUploadedData], yifyTorrent[YifyConstants.TorrentQuality])
                 
                 torrents.append(torrent);
             
-            movie = Movie(val[YifyConstants.ID], val[YifyConstants.TitleLong], val[YifyConstants.DescriptionFull], val[YifyConstants.Year],
-                val[YifyConstants.Rating], val[YifyConstants.Genres], val[YifyConstants.DateUploaded], torrents, val[YifyConstants.BackGroundImageOriginal])
+            movie = Movie(yifyMovie[YifyConstants.ID], yifyMovie[YifyConstants.TitleLong], yifyMovie[YifyConstants.DescriptionFull], yifyMovie[YifyConstants.Year],
+                yifyMovie[YifyConstants.Rating], yifyMovie[YifyConstants.Genres], yifyMovie[YifyConstants.DateUploaded], torrents, yifyMovie[YifyConstants.BackGroundImageOriginal])
 
             movies.append(movie)
+
+        Logger().Log("Yify movie data parsed returning Count : {}".format(len(movies)), "INFO")
         return movies;
 

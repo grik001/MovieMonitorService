@@ -13,3 +13,4 @@ class ConfigSetup():
                 ConfigSetup.YiftMovieRequestGetUrl = data["YiftMovieRequestGetUrl"]
                 ConfigSetup.MoviesDatabaseConnectionString = data["MoviesDatabaseConnectionString"]
                 ConfigSetup.LoggingMongoConnectionString = data["LoggingMongoConnectionString"]
+        
